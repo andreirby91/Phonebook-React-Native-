@@ -1,91 +1,30 @@
-// components/Hello.tsx
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../../App';
 
-export interface Props {
-  name: string;
-  enthusiasmLevel?: number;
-}
+type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+
+type Props = {
+  navigation: MainScreenNavigationProp;
+};
 
 interface State {
   enthusiasmLevel: number;
 }
 
-export class Home extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
+const Home = ({navigation}: Props) => {
+  return (
+    <View>
+      <Text>Hello World!</Text>
 
-    if ((props.enthusiasmLevel || 0) <= 0) {
-      throw new Error('You could be a little more enthusiastic. :D');
-    }
+      <TouchableOpacity onPress={() => navigation.navigate('AddNewContact')}>
+        <Text>Add a new contact</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
-    this.state = {
-      enthusiasmLevel: props.enthusiasmLevel || 1,
-    };
-  }
+const styles = StyleSheet.create({});
 
-  onIncrement = () =>
-    this.setState({
-      enthusiasmLevel: this.state.enthusiasmLevel + 1,
-    });
-  onDecrement = () =>
-    this.setState({
-      enthusiasmLevel: this.state.enthusiasmLevel - 1,
-    });
-  getExclamationMarks = (numChars: number) => Array(numChars + 1).join('!');
-
-  render() {
-    return (
-      <View style={styles.root}>
-        <Text style={styles.greeting}>
-          Hello{' '}
-          {this.props.name +
-            this.getExclamationMarks(this.state.enthusiasmLevel)}
-        </Text>
-
-        <View style={styles.buttons}>
-          <View style={styles.button}>
-            <Button
-              title="-"
-              onPress={this.onDecrement}
-              accessibilityLabel="decrement"
-              color="red"
-            />
-          </View>
-
-          <View style={styles.button}>
-            <Button
-              title="+"
-              onPress={this.onIncrement}
-              accessibilityLabel="increment"
-              color="blue"
-            />
-          </View>
-        </View>
-      </View>
-    );
-  }
-}
-
-// styles
-const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    alignSelf: 'center',
-  },
-  buttons: {
-    flexDirection: 'row',
-    minHeight: 70,
-    alignItems: 'stretch',
-    alignSelf: 'center',
-    borderWidth: 5,
-  },
-  button: {
-    flex: 1,
-    paddingVertical: 0,
-  },
-  greeting: {
-    color: '#999',
-    fontWeight: 'bold',
-  },
-});
+export default Home;
