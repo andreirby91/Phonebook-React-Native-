@@ -72,7 +72,7 @@ const Home = ({navigation}: Props) => {
     let isNumRegex = /^[0-9]+$/;
     const filterBy = isNumRegex.test(input) ? 'phone' : 'name';
     const filteredItems = contacts.filter((contact: Contact) =>
-      contact[filterBy].includes(input),
+      contact[filterBy].toLowerCase().includes(input.toLowerCase()),
     );
 
     return filteredItems;
