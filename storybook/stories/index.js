@@ -9,6 +9,7 @@ import Button from './Button';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
 import ContactItemStory from './ContactItem';
+import Search from './Search';
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -17,6 +18,10 @@ storiesOf('Welcome', module).add('to Storybook', () => (
 storiesOf('ContactItem', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
   .add('Default', () => <ContactItemStory />);
+
+storiesOf('Search', module)
+  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .add('Default', () => <Search />);
 
 storiesOf('Button', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
