@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../App';
@@ -11,11 +11,21 @@ type Props = {
   navigation: MainScreenNavigationProp;
 };
 
+type Contact = {
+  name: string;
+  phone: string;
+  sex: string;
+  country: string;
+  code: string;
+};
+
 interface State {
-  enthusiasmLevel: number;
+  searchValue: string | number;
+  contacts: Array<Contact>;
+  filteredContacts: Array<Contact>;
 }
 
-const CONTACTS = [
+const CONTACTS: Array<Contact> = [
   {
     name: 'John Doe',
     phone: '763000000',
@@ -33,7 +43,29 @@ const CONTACTS = [
 ];
 
 const Home = ({navigation}: Props) => {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
+
+  useEffect(() => {
+    setContacts(CONTACTS);
+    setFilteredContacts(CONTACTS);
+  }, []);
+
+  const handleInputType = (input: string) => {
+    let isNumRegex = /^[0-9]+$/;
+    const filterBy = isNumRegex.test(input) ? 'phone' : 'name';
+    const filteredItems = contacts.filter((contact: Contact) =>
+      contact[filterBy].includes(input),
+    );
+
+    return filteredItems;
+  };
+
+  const handleSearch = (event: any) => {
+    setSearchValue(event);
+    setFilteredContacts(handleInputType(event));
+  };
 
   return (
     <View>
@@ -41,11 +73,14 @@ const Home = ({navigation}: Props) => {
         <TouchableOpacity onPress={() => navigation.navigate('AddNewContact')}>
           <Text>Add new contact</Text>
         </TouchableOpacity>
-        <Search searchValue onChangeText={() => setSearchValue(searchValue)} />
+        <Search
+          searchValue={searchValue}
+          onChangeText={(e: string | number) => handleSearch(e)}
+        />
       </View>
       <FlatList
         style={styles.list}
-        data={CONTACTS}
+        data={filteredContacts}
         keyExtractor={(item) => item.phone}
         renderItem={({item}) => {
           const {name, phone, sex, country, code} = item;

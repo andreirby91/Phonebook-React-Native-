@@ -1,7 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 
-const Search = ({searchValue, onChangeText}) => {
+const Search = ({
+  searchValue,
+  onChangeText,
+}: {
+  searchValue: string;
+  onChangeText: any;
+}) => {
   return (
     <View style={styles.container}>
       <TextInput
