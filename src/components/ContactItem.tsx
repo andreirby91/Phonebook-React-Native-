@@ -68,7 +68,7 @@ const ContactItem: React.FC<Props> = ({
       <View>
         <Text>{name}</Text>
         <Text>Sex: {sex}</Text>
-        <Text>{`${code}${phone} (${country})`}</Text>
+        <Text>{`${code} ${phone} (${country})`}</Text>
       </View>
     </Swipable>
   );
