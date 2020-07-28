@@ -99,7 +99,7 @@ const Home = ({navigation}: Props) => {
         <Text>No contacts found!</Text>
       </View>
     ) : (
-      <EmptyContactList navigation={navigation} />
+      <EmptyContactList onPress={() => navigation.navigate('AddNewContact')} />
     );
   };
 

@@ -5,33 +5,29 @@ import {storiesOf} from '@storybook/react-native';
 import {action} from '@storybook/addon-actions';
 import {linkTo} from '@storybook/addon-links';
 
-import Button from './Button';
+import PrimaryButtonStory from './PrimaryButton';
 import CenterView from './CenterView';
 import Welcome from './Welcome';
-import ContactItemStory from './ContactItem';
-import Search from './Search';
+import ContactItemStory from './ContactList/contactItem';
+import SearchStory from './ContactList/search';
+import EmptyContactListStory from './ContactList/emptyContactList';
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
 ));
 
-storiesOf('ContactItem', module)
+storiesOf('PrimaryButton', module)
+  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .add('default', () => <PrimaryButtonStory />);
+
+storiesOf('ContactList/Item', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
   .add('Default', () => <ContactItemStory />);
 
-storiesOf('Search', module)
+storiesOf('ContactList/Search', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('Default', () => <Search />);
+  .add('Default', () => <SearchStory />);
 
-storiesOf('Button', module)
+storiesOf('ContactList/Empty', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('with text', () => (
-    <Button onPress={action('clicked-text')}>
-      <Text>Hello Button</Text>
-    </Button>
-  ))
-  .add('with some emoji', () => (
-    <Button onPress={action('clicked-emoji')}>
-      <Text>😀 😎 👍 💯</Text>
-    </Button>
-  ));
+  .add('Default', () => <EmptyContactListStory />);

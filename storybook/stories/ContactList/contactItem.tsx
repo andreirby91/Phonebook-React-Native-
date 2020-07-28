@@ -9,6 +9,7 @@ const ContactItemStory = () => {
       code="+40"
       sex="Male"
       country="Romania"
+      onRightPress={() => alert('Item was deleted.')}
     />
   );
 };
