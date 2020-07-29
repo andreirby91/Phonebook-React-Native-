@@ -4,9 +4,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AddNewContactModal from './src/components/AddNewContactModal';
 import Home from './src/screens/Home';
-// import {AppContextProvider} from './src/context/AppContext_old';
 import AppStateContext from './src/context/app.context';
-import {useAppState} from './src/hooks/useAppState.hooks';
+import {useAppState} from './src/hooks/useAppState.hook';
 
 export type MainStackParamList = {
   Home: undefined;
