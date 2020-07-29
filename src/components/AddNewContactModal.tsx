@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import PrimaryButton from './PrimaryButton';
-import {useAppState} from '../hooks/useAppState.hooks';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../App';
 import {Contact} from '../screens/Home';
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
   },
   countryCode: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   formControl: {
     marginBottom: 25,
@@ -56,6 +55,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   countryCodePicker: {height: 110, width: 150},
+  countryFilterInput: {
+    height: 40,
+    width: 150,
+    padding: 10,
+    borderColor: '#ddd',
+    borderWidth: 1,
+    borderRadius: 20,
+    marginVertical: 10,
+  },
   submitBtn: {
     marginTop: 20,
   },
@@ -66,8 +74,10 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
   const [phone, setPhone] = useState<string>('');
   const [sex, setGender] = useState<string>('');
   const [country, setCountry] = useState<string>('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
   const [countries, setCountries] = useState<Array<string>>([]);
+  const [filteredCountries, setFilteredCountries] = useState<Array<string>>([]);
   const [codes, setCodes] = useState<Array<string>>([]);
   const [countriesData, setCountriesData] = useState<Country[]>([]);
   const {contactsList, addContact} = useContext(AppStateContext);
@@ -82,6 +92,7 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
     );
     const response = await request.json();
     setCountries(response.map((country: Country) => country.name));
+    setFilteredCountries(response.map((country: Country) => country.name));
     setCountriesData(response);
   };
 
@@ -142,7 +153,7 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
     return <Picker.Item label={code} value={code} key={code} />;
   });
 
-  const countryItems = countries.map((country) => {
+  const countryItems = filteredCountries.map((country) => {
     return <Picker.Item label={country} value={country} key={country} />;
   });
 
@@ -166,6 +177,45 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
         keyboardType="numeric"
         maxLength={20}
       />
+      <View style={styles.countryCode}>
+        <View style={{alignItems: 'center'}}>
+          <Text style={styles.label}>Country:</Text>
+          <TextInput
+            style={styles.countryFilterInput}
+            value={searchValue}
+            onChangeText={(value) => {
+              setSearchValue(value);
+              const countryFilter = countries.filter((country) =>
+                country.startsWith(value),
+              );
+              setFilteredCountries(countryFilter);
+              if (countryFilter.length === 1) {
+                onCountryValueChange(countryFilter[0]);
+              }
+            }}
+            onSubmitEditing={() => setSearchValue('')}
+            placeholder="Type your country"
+          />
+          <Picker
+            itemStyle={styles.countryCodePicker}
+            selectedValue={country}
+            style={styles.formControl}
+            onValueChange={(value: string | number) =>
+              onCountryValueChange(value)
+            }>
+            {countries.length > filteredCountries.length
+              ? countryItems
+              : [
+                  <Picker.Item label="Select country" value="" key="none" />,
+                  ...countryItems,
+                ]}
+          </Picker>
+        </View>
+        <View style={{alignItems: 'center'}}>
+          <Text style={styles.label}>Code:</Text>
+          <CodePicker />
+        </View>
+      </View>
       <Text style={styles.label}>Gender:</Text>
       <Picker
         itemStyle={{height: 110}}
@@ -176,27 +226,6 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
         <Picker.Item label="Male" value="male" />
         <Picker.Item label="Female" value="female" />
       </Picker>
-      <View style={styles.countryCode}>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.label}>Country:</Text>
-          <Picker
-            itemStyle={styles.countryCodePicker}
-            selectedValue={country}
-            style={styles.formControl}
-            onValueChange={(value: string | number) =>
-              onCountryValueChange(value)
-            }>
-            {[
-              <Picker.Item label="Select country" value="" key="none" />,
-              ...countryItems,
-            ]}
-          </Picker>
-        </View>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.label}>Code:</Text>
-          <CodePicker />
-        </View>
-      </View>
       <PrimaryButton
         title="Add contact"
         onPress={handleSubmit}
