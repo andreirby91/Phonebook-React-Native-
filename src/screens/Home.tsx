@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../App';
 import ContactItem from '../components/ContactItem';
 import Search from '../components/Search';
 import EmptyContactList from '../components/EmptyContactList';
+import AppStateContext from '../context/app.context';
 
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
@@ -12,7 +13,7 @@ type Props = {
   navigation: MainScreenNavigationProp;
 };
 
-type Contact = {
+export type Contact = {
   id: number;
   name: string;
   phone: string;
@@ -43,35 +44,18 @@ const styles = StyleSheet.create({
 
 const Home = ({navigation}: Props) => {
   const [searchValue, setSearchValue] = useState<string>('');
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [myContacts, setMyContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
-  const CONTACTS: Array<Contact> = [
-    {
-      id: 1,
-      name: 'John Doe',
-      phone: '763000000',
-      sex: 'Male',
-      country: 'Romania',
-      code: '+40',
-    },
-    {
-      id: 2,
-      name: 'Johana Doe',
-      phone: '763000001',
-      sex: 'Female',
-      country: 'Romania',
-      code: '+40',
-    },
-  ];
+  const {contactsList, removeContact} = useContext(AppStateContext);
 
   useEffect(() => {
-    handleContactUpdates(CONTACTS);
-  }, []);
+    handleContactUpdates(contactsList);
+  }, [contactsList]);
 
   const handleFilteringByType = (input: string) => {
     let isNumRegex = /^[0-9]+$/;
     const filterBy = isNumRegex.test(input) ? 'phone' : 'name';
-    const filteredItems = contacts.filter((contact: Contact) =>
+    const filteredItems = myContacts.filter((contact: Contact) =>
       contact[filterBy].toLowerCase().includes(input.toLowerCase()),
     );
 
@@ -84,17 +68,16 @@ const Home = ({navigation}: Props) => {
   };
 
   const handleContactUpdates = (contacts: Contact[]) => {
-    setContacts(contacts);
+    setMyContacts(contacts);
     setFilteredContacts(contacts);
   };
 
-  const handleDelete = (id: number) => {
-    const updatedContacts = contacts.filter((contact) => contact.id !== id);
-    handleContactUpdates(updatedContacts);
+  const handleDelete = (contactId: number) => {
+    removeContact(contactId);
   };
 
   const ListEmptyComponent = () => {
-    return contacts.length ? (
+    return myContacts.length ? (
       <View style={styles.emptyList}>
         <Text>No contacts found!</Text>
       </View>

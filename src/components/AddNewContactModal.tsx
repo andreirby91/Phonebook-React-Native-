@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   View,
   ScrollView,
@@ -9,10 +9,21 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import PrimaryButton from './PrimaryButton';
+import {useAppState} from '../hooks/useAppState.hooks';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../../App';
+import {Contact} from '../screens/Home';
+import AppStateContext from '../context/app.context';
 
 type Country = {
   name: string;
   callingCodes: string[];
+};
+
+type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+
+type Props = {
+  navigation: MainScreenNavigationProp;
 };
 
 const styles = StyleSheet.create({
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddNewContactModal: React.FC = () => {
+const AddNewContactModal: React.FC<Props> = ({navigation}) => {
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [sex, setGender] = useState<string>('');
@@ -59,6 +70,7 @@ const AddNewContactModal: React.FC = () => {
   const [countries, setCountries] = useState<Array<string>>([]);
   const [codes, setCodes] = useState<Array<string>>([]);
   const [countriesData, setCountriesData] = useState<Country[]>([]);
+  const {contactsList, addContact} = useContext(AppStateContext);
 
   useEffect(() => {
     handleRequest();
@@ -84,15 +96,23 @@ const AddNewContactModal: React.FC = () => {
       return;
     }
 
+    const id =
+      (Math.max.apply(
+        Math,
+        contactsList.map((contact: Contact) => contact.id),
+      ) || 0) + 1;
+
     const newContact = {
+      id: 0,
       name,
       phone,
       sex,
       country,
       code,
     };
-
-    console.log('Submitted newContact: ', newContact);
+    console.log('newContact: ', newContact);
+    addContact(newContact);
+    navigation.goBack();
   };
 
   const onCountryValueChange = (value: string | number) => {

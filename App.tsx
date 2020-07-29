@@ -4,6 +4,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AddNewContactModal from './src/components/AddNewContactModal';
 import Home from './src/screens/Home';
+// import {AppContextProvider} from './src/context/AppContext_old';
+import AppStateContext from './src/context/app.context';
+import {useAppState} from './src/hooks/useAppState.hooks';
 
 export type MainStackParamList = {
   Home: undefined;
@@ -26,17 +29,23 @@ const MainStackScreen = () => {
 };
 
 const App = () => {
+  const appState = useAppState();
   return (
-    <NavigationContainer>
-      <RootStack.Navigator mode="modal">
-        <RootStack.Screen
-          name="Main"
-          component={MainStackScreen}
-          options={{headerShown: false}}
-        />
-        <RootStack.Screen name="AddNewContact" component={AddNewContactModal} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <AppStateContext.Provider value={appState}>
+      <NavigationContainer>
+        <RootStack.Navigator mode="modal">
+          <RootStack.Screen
+            name="Main"
+            component={MainStackScreen}
+            options={{headerShown: false}}
+          />
+          <RootStack.Screen
+            name="AddNewContact"
+            component={AddNewContactModal}
+          />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </AppStateContext.Provider>
   );
 };
 
