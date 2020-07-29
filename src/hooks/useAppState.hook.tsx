@@ -1,10 +1,12 @@
 import React from 'react';
 import {AppStateContext} from '../context/app.context';
 import {Contact} from '../screens/Home';
+import {Country} from '../components/AddNewContactModal';
 
 export const useAppState = (): AppStateContext => {
   const [state, setState] = React.useState<AppStateContext>({
     contactsList: [],
+    countriesData: [],
     addContact: () => {},
     removeContact: () => {},
   });
@@ -25,8 +27,14 @@ export const useAppState = (): AppStateContext => {
     }));
   }
 
+  function setCountriesDataToStorage(data: Country[]) {}
+  function getCountriesDataFromStorage() {}
+  function setContactToStorage(data: Country[]) {}
+  function getContactsFromStorage() {}
+
   return {
     contactsList: state.contactsList,
+    countriesData: state.countriesData,
     addContact,
     removeContact,
   };

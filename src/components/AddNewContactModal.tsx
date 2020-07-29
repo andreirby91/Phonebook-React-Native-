@@ -14,7 +14,7 @@ import {RootStackParamList} from '../../App';
 import {Contact} from '../screens/Home';
 import AppStateContext from '../context/app.context';
 
-type Country = {
+export type Country = {
   name: string;
   callingCodes: string[];
 };
