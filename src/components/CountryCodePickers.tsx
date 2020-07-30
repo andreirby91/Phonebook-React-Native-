@@ -27,14 +27,13 @@ const styles = StyleSheet.create({
   },
   countryCodePicker: {
     height: 110,
-    width: 150,
   },
   countryFilterInput: {
     height: 40,
     width: 180,
     padding: 10,
     paddingHorizontal: 20,
-    borderColor: '#ddd',
+    borderColor: 'grey',
     borderWidth: 1,
     borderRadius: 20,
     marginVertical: 10,
@@ -138,7 +137,7 @@ const CountryCodePickers = ({
     });
 
     return (
-      <View style={{width: 200}}>
+      <View style={{flex: 1, marginRight: 20}}>
         <Text style={styles.label}>Country:</Text>
         <View
           style={[
@@ -168,13 +167,14 @@ const CountryCodePickers = ({
   };
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <TextInput
         style={[
           styles.formControl,
           {
             fontSize: 17,
             paddingHorizontal: 10,
+            height: 50,
             borderWidth: 0.5,
             borderRadius: 4,
             marginTop: 10,
