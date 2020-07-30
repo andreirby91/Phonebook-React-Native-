@@ -10,13 +10,18 @@ export const useAppState = (): AppStateContext => {
     countriesList: [],
     addContact: () => {},
     removeContact: () => {},
+    setCountriesList: () => {},
     setCountriesDataToStorage: () => {},
     getCountriesDataFromStorage: () => {},
     getContactsFromStorage: () => {},
   });
 
   function addContact(newContact: Contact) {
-    const newContactList = [newContact, ...state.contactsList];
+    let newContactList = [newContact, ...state.contactsList];
+    newContactList.sort((a, b) =>
+      a.name < b.name ? -1 : Number(a.name > b.name),
+    );
+
     setState((state) => ({
       ...state,
       contactsList: newContactList,
@@ -34,6 +39,14 @@ export const useAppState = (): AppStateContext => {
       contactsList: newContactList,
     }));
     setContactsToStorage(newContactList);
+  }
+
+  function setCountriesList(countries: Country[]) {
+    setState((state) => ({
+      ...state,
+      countriesList: [...countries],
+    }));
+    setCountriesDataToStorage(countries);
   }
 
   async function setCountriesDataToStorage(data: Country[]) {
@@ -80,6 +93,7 @@ export const useAppState = (): AppStateContext => {
     countriesList: state.countriesList,
     addContact,
     removeContact,
+    setCountriesList,
     getCountriesDataFromStorage,
     setCountriesDataToStorage,
     getContactsFromStorage,

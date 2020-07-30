@@ -13,6 +13,7 @@ import {Contact} from '../screens/Home';
 import AppStateContext from '../context/app.context';
 import CountryCodePickers from './CountryCodePickers';
 import CountryCodeInputs from './CountryCodeInputs';
+import {getCountriesData} from '../services/countries.service';
 
 export type Country = {
   name: string;
@@ -74,12 +75,18 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
     contactsList,
     countriesList,
     addContact,
+    setCountriesList,
     getCountriesDataFromStorage,
   } = useContext(AppStateContext);
 
   useEffect(() => {
-    getCountriesDataFromStorage();
+    !countriesList.length ? handleRequest() : getCountriesDataFromStorage();
   }, []);
+
+  const handleRequest = async () => {
+    const countriesData = await getCountriesData();
+    setCountriesList(countriesData);
+  };
 
   const handleSubmit = () => {
     if (!name || !phone || !sex || !country) {

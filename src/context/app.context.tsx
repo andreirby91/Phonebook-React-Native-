@@ -7,6 +7,7 @@ export interface AppStateContext {
   countriesList: Country[];
   addContact: (contact: Contact) => void;
   removeContact: (contactId: number) => void;
+  setCountriesList: (countries: Country[]) => void;
   getContactsFromStorage: () => void;
   setCountriesDataToStorage: (countries: Country[]) => void;
   getCountriesDataFromStorage: () => void;
@@ -17,6 +18,7 @@ export const DEFAULT_VALUE = {
   countriesList: [],
   addContact: () => {},
   removeContact: () => {},
+  setCountriesList: () => {},
   getContactsFromStorage: () => {},
   setCountriesDataToStorage: () => {},
   getCountriesDataFromStorage: () => {},

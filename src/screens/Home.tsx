@@ -5,6 +5,7 @@ import Search from '../components/Search';
 import EmptyContactList from '../components/EmptyContactList';
 import AppStateContext from '../context/app.context';
 import PrimaryButton from '../components/PrimaryButton';
+import FontistoIcon from 'react-native-vector-icons/Fontisto';
 
 export type Contact = {
   id: number;
@@ -26,12 +27,20 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   header: {
+    flexDirection: 'row',
     alignItems: 'center',
     paddingTop: 20,
   },
   emptyList: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  emptyListText: {
+    fontSize: 20,
+  },
+  emptyListIcon: {
+    fontSize: 50,
+    marginBottom: 10,
   },
 });
 
@@ -78,7 +87,8 @@ const Home: React.FC<any> = ({navigation}) => {
   const ListEmptyComponent = () => {
     return myContacts.length ? (
       <View style={styles.emptyList}>
-        <Text>No contacts found!</Text>
+        <FontistoIcon name="rains" style={styles.emptyListIcon} />
+        <Text style={styles.emptyListText}>No contacts found!</Text>
       </View>
     ) : (
       <EmptyContactList onPress={() => navigation.navigate('AddNewContact')} />
@@ -88,15 +98,16 @@ const Home: React.FC<any> = ({navigation}) => {
   return (
     <>
       <View style={styles.header}>
-        <PrimaryButton
-          title="Add new contact"
-          onPress={() =>
-            navigation ? navigation.navigate('AddNewContact') : null
-          }
-        />
         <Search
           searchValue={searchValue}
           onChangeText={(text: string) => handleSearch(text)}
+        />
+        <PrimaryButton
+          hasIcon={true}
+          onPress={() =>
+            navigation ? navigation.navigate('AddNewContact') : null
+          }
+          customStyle={{minWidth: 40, height: 40}}
         />
       </View>
       <FlatList

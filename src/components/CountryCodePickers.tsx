@@ -3,7 +3,6 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import {Country} from './AddNewContactModal';
 import AppStateContext from '../context/app.context';
-import {getCountriesData} from '../services/countries.service';
 
 const styles = StyleSheet.create({
   textInput: {
@@ -52,21 +51,11 @@ const CountryCodePickers = ({
   const [code, setCode] = useState<string>('');
   const [codes, setCodes] = useState<Array<string>>([]);
   const [countriesData, setCountriesData] = useState<Country[]>([]);
-  const {countriesList, setCountriesDataToStorage} = useContext(
-    AppStateContext,
-  );
+  const {countriesList} = useContext(AppStateContext);
 
   useEffect(() => {
-    !countriesList.length
-      ? handleRequest()
-      : handleCountriesStateUpdate(countriesList);
+    handleCountriesStateUpdate(countriesList);
   }, []);
-
-  const handleRequest = async () => {
-    const countriesData = await getCountriesData();
-    handleCountriesStateUpdate(countriesData);
-    setCountriesDataToStorage(countriesData);
-  };
 
   const handleCountriesStateUpdate = (data: Country[]) => {
     setCountries(data.map((country: Country) => country.name));

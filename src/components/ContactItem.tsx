@@ -38,6 +38,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
   },
+  icon: {
+    fontSize: 35,
+    borderWidth: 0.5,
+    borderRadius: 5,
+    padding: 5,
+    borderColor: 'grey',
+    marginRight: 10,
+  },
 });
 
 const ContactItem: React.FC<Props> = ({
@@ -76,10 +84,18 @@ const ContactItem: React.FC<Props> = ({
         />
       )}>
       <View style={styles.container}>
-        <FontistoIcon name="female" />
+        {sex === 'male' ? (
+          <FontistoIcon name="male" style={styles.icon} />
+        ) : (
+          <FontistoIcon name="female" style={styles.icon} />
+        )}
+
         <View>
-          <Text style={[styles.text, {marginBottom: 5}]}>{name}</Text>
+          <Text numberOfLines={1} style={[styles.text, {marginBottom: 5}]}>
+            {name}
+          </Text>
           <Text
+            numberOfLines={1}
             style={[
               styles.text,
               {marginBottom: 5},

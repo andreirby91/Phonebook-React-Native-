@@ -1,10 +1,12 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, ViewStyle} from 'react-native';
+import FontistoIcon from 'react-native-vector-icons/Fontisto';
 
 type Props = {
   onPress: () => void;
-  title: string;
+  title?: string;
   customStyle?: ViewStyle;
+  hasIcon?: boolean;
 };
 
 const styles = StyleSheet.create({
@@ -20,11 +22,27 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
   },
+  iconStyle: {
+    flexDirection: 'row',
+  },
+  icon: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#fff',
+  },
 });
 
-const PrimaryButton: React.FC<Props> = ({onPress, title, customStyle}) => {
+const PrimaryButton: React.FC<Props> = ({
+  onPress,
+  title,
+  customStyle,
+  hasIcon,
+}) => {
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, customStyle]}>
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, customStyle, hasIcon ? styles.iconStyle : null]}>
+      {hasIcon ? <FontistoIcon name="plus-a" style={styles.icon} /> : null}
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );

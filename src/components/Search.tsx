@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    width: 300,
+    width: 345,
     borderRadius: 20,
     fontSize: 18,
   },
