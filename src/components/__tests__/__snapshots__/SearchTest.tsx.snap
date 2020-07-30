@@ -10,6 +10,7 @@ exports[`renders correctly with defaults 1`] = `
 >
   <TextInput
     allowFontScaling={true}
+    autoCorrect={false}
     onChangeText={[Function]}
     placeholder="Search by names and numbers:"
     rejectResponderTermination={true}
@@ -23,7 +24,7 @@ exports[`renders correctly with defaults 1`] = `
         "marginVertical": 10,
         "paddingHorizontal": 20,
         "paddingVertical": 10,
-        "width": 300,
+        "width": 345,
       }
     }
     underlineColorAndroid="transparent"

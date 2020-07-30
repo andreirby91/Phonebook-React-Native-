@@ -99,7 +99,7 @@ const ContactItem: React.FC<Props> = ({
             style={[
               styles.text,
               {marginBottom: 5},
-            ]}>{`${code} ${phone} (${country})`}</Text>
+            ]}>{`+${code} ${phone} (${country})`}</Text>
         </View>
       </View>
     </Swipable>

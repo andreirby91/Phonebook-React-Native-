@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingTop: 20,
+    paddingHorizontal: 10,
   },
   emptyList: {
     alignItems: 'center',
@@ -107,7 +109,7 @@ const Home: React.FC<any> = ({navigation}) => {
           onPress={() =>
             navigation ? navigation.navigate('AddContact') : null
           }
-          customStyle={{minWidth: 40, height: 40}}
+          customStyle={{minWidth: 40, height: 40, marginLeft: 20}}
         />
       </View>
       <FlatList

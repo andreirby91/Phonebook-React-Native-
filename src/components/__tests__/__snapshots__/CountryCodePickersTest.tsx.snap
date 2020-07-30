@@ -20,10 +20,11 @@ Array [
     </Text>
     <TextInput
       allowFontScaling={true}
+      autoCorrect={false}
       onBlur={[Function]}
       onChangeText={[Function]}
       onSubmitEditing={[Function]}
-      placeholder="Type your country"
+      placeholder="Search your country"
       rejectResponderTermination={true}
       style={
         Object {
@@ -33,7 +34,8 @@ Array [
           "height": 40,
           "marginVertical": 10,
           "padding": 10,
-          "width": 150,
+          "paddingHorizontal": 20,
+          "width": 180,
         }
       }
       underlineColorAndroid="transparent"

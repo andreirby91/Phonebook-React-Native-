@@ -2,9 +2,6 @@ import React from 'react';
 import {View, TextInput, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
   input: {
     borderWidth: 0.5,
     borderColor: 'grey',
@@ -12,7 +9,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginVertical: 10,
-    width: 345,
+    minHeight: 45,
+    flex: 1,
     borderRadius: 20,
     fontSize: 18,
   },
@@ -26,15 +24,13 @@ const Search = ({
   onChangeText: any;
 }) => {
   return (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        value={searchValue}
-        onChangeText={onChangeText}
-        autoCorrect={false}
-        placeholder="Search by names and numbers:"
-      />
-    </View>
+    <TextInput
+      style={styles.input}
+      value={searchValue}
+      onChangeText={onChangeText}
+      autoCorrect={false}
+      placeholder="Search by names and numbers:"
+    />
   );
 };
 

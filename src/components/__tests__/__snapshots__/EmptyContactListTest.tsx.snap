@@ -2,8 +2,36 @@
 
 exports[`renders correctly with defaults 1`] = `
 <View
-  style={Object {}}
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+    }
+  }
 >
+  <Text
+    allowFontScaling={false}
+    style={
+      Array [
+        Object {
+          "color": undefined,
+          "fontSize": 12,
+        },
+        Object {
+          "fontSize": 70,
+          "marginBottom": 50,
+        },
+        Object {
+          "fontFamily": "Fontisto",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+        },
+        Object {},
+      ]
+    }
+  >
+    
+  </Text>
   <Text
     style={
       Object {

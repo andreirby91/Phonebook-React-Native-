@@ -111,7 +111,14 @@ exports[`renders correctly with defaults 1`] = `
               "color": undefined,
               "fontSize": 12,
             },
-            undefined,
+            Object {
+              "borderColor": "grey",
+              "borderRadius": 5,
+              "borderWidth": 0.5,
+              "fontSize": 35,
+              "marginRight": 10,
+              "padding": 5,
+            },
             Object {
               "fontFamily": "Fontisto",
               "fontStyle": "normal",
@@ -125,6 +132,7 @@ exports[`renders correctly with defaults 1`] = `
       </Text>
       <View>
         <Text
+          numberOfLines={1}
           style={
             Array [
               Object {
@@ -139,6 +147,7 @@ exports[`renders correctly with defaults 1`] = `
           Andrei Beraru
         </Text>
         <Text
+          numberOfLines={1}
           style={
             Array [
               Object {
@@ -150,7 +159,7 @@ exports[`renders correctly with defaults 1`] = `
             ]
           }
         >
-          40 0763111111 (Romania)
+          +40 0763111111 (Romania)
         </Text>
       </View>
     </View>

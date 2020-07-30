@@ -25,7 +25,10 @@ const styles = StyleSheet.create({
     width: 150,
     textAlign: 'center',
   },
-  countryCodePicker: {height: 110, width: 150},
+  countryCodePicker: {
+    height: 110,
+    width: 150,
+  },
   countryFilterInput: {
     height: 40,
     width: 180,

@@ -6,10 +6,41 @@ Array [
     style={
       Object {
         "alignItems": "center",
+        "flexDirection": "row",
         "paddingTop": 20,
       }
     }
   >
+    <View
+      style={
+        Object {
+          "padding": 10,
+        }
+      }
+    >
+      <TextInput
+        allowFontScaling={true}
+        autoCorrect={false}
+        onChangeText={[Function]}
+        placeholder="Search by names and numbers:"
+        rejectResponderTermination={true}
+        style={
+          Object {
+            "backgroundColor": "#fafafb",
+            "borderColor": "grey",
+            "borderRadius": 20,
+            "borderWidth": 0.5,
+            "fontSize": 18,
+            "marginVertical": 10,
+            "paddingHorizontal": 20,
+            "paddingVertical": 10,
+            "width": 345,
+          }
+        }
+        underlineColorAndroid="transparent"
+        value=""
+      />
+    </View>
     <View
       accessible={true}
       focusable={true}
@@ -25,13 +56,38 @@ Array [
           "alignItems": "center",
           "backgroundColor": "#0984e3",
           "borderRadius": 30,
-          "height": 50,
+          "flexDirection": "row",
+          "height": 40,
           "justifyContent": "center",
-          "minWidth": 200,
+          "minWidth": 40,
           "opacity": 1,
         }
       }
     >
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": undefined,
+              "fontSize": 12,
+            },
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "textAlign": "center",
+            },
+            Object {
+              "fontFamily": "Fontisto",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
       <Text
         style={
           Object {
@@ -39,37 +95,6 @@ Array [
             "fontSize": 18,
           }
         }
-      >
-        Add new contact
-      </Text>
-    </View>
-    <View
-      style={
-        Object {
-          "padding": 10,
-        }
-      }
-    >
-      <TextInput
-        allowFontScaling={true}
-        onChangeText={[Function]}
-        placeholder="Search by names and numbers:"
-        rejectResponderTermination={true}
-        style={
-          Object {
-            "backgroundColor": "#fafafb",
-            "borderColor": "grey",
-            "borderRadius": 20,
-            "borderWidth": 0.5,
-            "fontSize": 18,
-            "marginVertical": 10,
-            "paddingHorizontal": 20,
-            "paddingVertical": 10,
-            "width": 300,
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
       />
     </View>
   </View>,
@@ -107,8 +132,36 @@ Array [
   >
     <View>
       <View
-        style={Object {}}
+        style={
+          Object {
+            "alignItems": "center",
+            "justifyContent": "center",
+          }
+        }
       >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 12,
+              },
+              Object {
+                "fontSize": 70,
+                "marginBottom": 50,
+              },
+              Object {
+                "fontFamily": "Fontisto",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
         <Text
           style={
             Object {
