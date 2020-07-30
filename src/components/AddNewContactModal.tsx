@@ -23,7 +23,7 @@ export type Country = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
-    paddingVertical: 50,
+    paddingVertical: 20,
   },
   countryCode: {
     flexDirection: 'row',
@@ -116,53 +116,65 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.label}>Name:</Text>
-      <TextInput
-        placeholder="Type your name"
-        style={[styles.formControl, styles.textInput]}
-        onChangeText={(text) => setName(text)}
-        value={name}
-        autoFocus={true}
-        maxLength={30}
-      />
-      <Text style={styles.label}>Phone:</Text>
-      <TextInput
-        placeholder="Phone"
-        style={[styles.formControl, styles.textInput]}
-        onChangeText={(text) => setPhone(text)}
-        value={phone}
-        keyboardType="numeric"
-        maxLength={20}
-      />
-      <View style={styles.countryCode}>
-        {countriesList.length ? (
-          <CountryCodePickers
-            onCodeUpdate={(code) => setCode(code)}
-            onCountryUpdate={(country) => setCountry(country)}
-          />
-        ) : (
-          <CountryCodeInputs
-            onCodeUpdate={(code) => setCode(code)}
-            onCountryUpdate={(country) => setCountry(country)}
-          />
-        )}
+    <ScrollView>
+      <View style={styles.container}>
+        <Text style={styles.label}>Name:</Text>
+        <TextInput
+          placeholder="Type your name"
+          style={[styles.formControl, styles.textInput]}
+          onChangeText={(text) => setName(text)}
+          value={name}
+          autoFocus={true}
+          maxLength={30}
+        />
+        <Text style={styles.label}>Phone:</Text>
+        <TextInput
+          placeholder="Phone"
+          style={[styles.formControl, styles.textInput]}
+          onChangeText={(text) => setPhone(text)}
+          value={phone}
+          keyboardType="numeric"
+          maxLength={20}
+        />
+        <View style={styles.countryCode}>
+          {countriesList.length ? (
+            <CountryCodePickers
+              onCodeUpdate={(code) => setCode(code)}
+              onCountryUpdate={(country) => setCountry(country)}
+            />
+          ) : (
+            <CountryCodeInputs
+              onCodeUpdate={(code) => setCode(code)}
+              onCountryUpdate={(country) => setCountry(country)}
+            />
+          )}
+        </View>
+        <Text style={styles.label}>Gender:</Text>
+        <View
+          style={[
+            styles.formControl,
+            {
+              borderWidth: 0.5,
+              borderRadius: 4,
+              marginTop: 10,
+              borderColor: 'grey',
+            },
+          ]}>
+          <Picker
+            itemStyle={{height: 110}}
+            selectedValue={sex}
+            onValueChange={(value) => setGender(value.toString())}>
+            <Picker.Item label="Select gender" value="" />
+            <Picker.Item label="Male" value="male" />
+            <Picker.Item label="Female" value="female" />
+          </Picker>
+        </View>
+        <PrimaryButton
+          title="Add contact"
+          onPress={handleSubmit}
+          customStyle={styles.submitBtn}
+        />
       </View>
-      <Text style={styles.label}>Gender:</Text>
-      <Picker
-        itemStyle={{height: 110}}
-        selectedValue={sex}
-        style={styles.formControl}
-        onValueChange={(value) => setGender(value.toString())}>
-        <Picker.Item label="Select gender" value="" />
-        <Picker.Item label="Male" value="male" />
-        <Picker.Item label="Female" value="female" />
-      </Picker>
-      <PrimaryButton
-        title="Add contact"
-        onPress={handleSubmit}
-        customStyle={styles.submitBtn}
-      />
     </ScrollView>
   );
 };

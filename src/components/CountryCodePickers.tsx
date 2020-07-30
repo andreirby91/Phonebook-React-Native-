@@ -84,71 +84,126 @@ const CountryCodePickers = ({
     onCodeUpdate(newCode);
   };
 
-  const renderCodeItems = codes.map((code) => {
-    return <Picker.Item label={code} value={code} key={code} />;
-  });
-
-  const renderCountryItems = filteredCountries.map((country) => {
-    return <Picker.Item label={country} value={country} key={country} />;
-  });
-
   const CodePicker = () => {
-    return !codes[0] ? (
-      <Text style={styles.noCode}>N/A</Text>
-    ) : (
-      <Picker
-        itemStyle={styles.countryCodePicker}
-        selectedValue={code}
-        style={styles.formControl}
-        onValueChange={(value) => {
-          setCode(value.toString());
-          onCodeUpdate(value.toString());
-        }}>
-        {renderCodeItems}
-      </Picker>
+    const renderCodeItems = codes.map((code) => {
+      return <Picker.Item label={code} value={code} key={code} />;
+    });
+
+    return (
+      <View style={{width: 150}}>
+        <Text style={styles.label}>Code:</Text>
+        {!codes[0] ? (
+          <View
+            style={[
+              styles.formControl,
+              {
+                borderWidth: 0.5,
+                borderColor: 'grey',
+                borderRadius: 4,
+                marginTop: 10,
+              },
+            ]}>
+            <Text style={styles.noCode}>N/A</Text>
+          </View>
+        ) : (
+          <View
+            style={[
+              styles.formControl,
+              {
+                borderWidth: 0.5,
+                borderColor: 'grey',
+                borderRadius: 4,
+                marginTop: 10,
+              },
+            ]}>
+            <Picker
+              itemStyle={[styles.countryCodePicker, {textAlign: 'center'}]}
+              selectedValue={code}
+              style={{width: 150}}
+              onValueChange={(value) => {
+                setCode(value.toString());
+                onCodeUpdate(value.toString());
+              }}>
+              {renderCodeItems}
+            </Picker>
+          </View>
+        )}
+      </View>
+    );
+  };
+
+  const CountryPicker = () => {
+    const renderCountryItems = filteredCountries.map((country) => {
+      return <Picker.Item label={country} value={country} key={country} />;
+    });
+
+    return (
+      <View style={{width: 200}}>
+        <Text style={styles.label}>Country:</Text>
+        <View
+          style={[
+            styles.formControl,
+            {
+              borderWidth: 0.5,
+              borderRadius: 4,
+              marginTop: 10,
+              borderColor: 'grey',
+            },
+          ]}>
+          <Picker
+            itemStyle={styles.countryCodePicker}
+            selectedValue={country}
+            style={[{width: 200}]}
+            onValueChange={(value) => onCountryValueChange(value.toString())}>
+            {countries.length > filteredCountries.length
+              ? renderCountryItems
+              : [
+                  <Picker.Item label="Select country" value="" key="none" />,
+                  ...renderCountryItems,
+                ]}
+          </Picker>
+        </View>
+      </View>
     );
   };
 
   return (
-    <>
-      <View style={{alignItems: 'center'}}>
-        <Text style={styles.label}>Country:</Text>
-        <TextInput
-          style={styles.countryFilterInput}
-          value={searchValue}
-          onChangeText={(value) => {
-            setSearchValue(value);
-            const countryFilter = countries.filter((country) =>
-              country.startsWith(value),
-            );
-            setFilteredCountries(countryFilter);
-            if (countryFilter.length) {
-              onCountryValueChange(countryFilter[0]);
-            }
-          }}
-          onSubmitEditing={() => setSearchValue('')}
-          onBlur={() => setSearchValue('')}
-          autoCorrect={false}
-          placeholder="Search your country"
-        />
-        <Picker
-          itemStyle={styles.countryCodePicker}
-          selectedValue={country}
-          style={styles.formControl}
-          onValueChange={(value) => onCountryValueChange(value.toString())}>
-          {countries.length > filteredCountries.length
-            ? renderCountryItems
-            : [
-                <Picker.Item label="Select country" value="" key="none" />,
-                ...renderCountryItems,
-              ]}
-        </Picker>
-      </View>
-      <View style={{alignItems: 'center'}}>
-        <Text style={styles.label}>Code:</Text>
+    <View>
+      <TextInput
+        style={[
+          styles.formControl,
+          {
+            fontSize: 17,
+            paddingHorizontal: 10,
+            borderWidth: 0.5,
+            borderRadius: 4,
+            marginTop: 10,
+            borderColor: 'grey',
+          },
+        ]}
+        value={searchValue}
+        onChangeText={(value) => {
+          setSearchValue(value);
+          const countryFilter = countries.filter((country) =>
+            country.toLowerCase().startsWith(value.toLocaleLowerCase()),
+          );
+          setFilteredCountries(countryFilter);
+          if (countryFilter.length) {
+            onCountryValueChange(countryFilter[0]);
+          }
+        }}
+        autoCorrect={false}
+        placeholder="Filter countries"
+      />
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <CountryPicker />
         <CodePicker />
       </View>
-    </>
+    </View>
   );
 };
 
