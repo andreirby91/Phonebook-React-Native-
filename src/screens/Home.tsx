@@ -1,18 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react';
 import {StyleSheet, Text, View, FlatList} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../App';
 import ContactItem from '../components/ContactItem';
 import Search from '../components/Search';
 import EmptyContactList from '../components/EmptyContactList';
 import AppStateContext from '../context/app.context';
 import PrimaryButton from '../components/PrimaryButton';
-
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
-
-type Props = {
-  navigation?: MainScreenNavigationProp;
-};
 
 export type Contact = {
   id: number;
@@ -43,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = ({navigation}: Props) => {
+const Home: React.FC<any> = ({navigation}) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [myContacts, setMyContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
@@ -89,11 +81,7 @@ const Home = ({navigation}: Props) => {
         <Text>No contacts found!</Text>
       </View>
     ) : (
-      <EmptyContactList
-        onPress={() =>
-          navigation ? navigation.navigate('AddNewContact') : null
-        }
-      />
+      <EmptyContactList onPress={() => navigation.navigate('AddNewContact')} />
     );
   };
 

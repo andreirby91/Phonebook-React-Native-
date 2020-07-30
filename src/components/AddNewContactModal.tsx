@@ -9,8 +9,6 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import PrimaryButton from './PrimaryButton';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../../App';
 import {Contact} from '../screens/Home';
 import AppStateContext from '../context/app.context';
 import CountryCodePickers from './CountryCodePickers';
@@ -19,12 +17,6 @@ import CountryCodeInputs from './CountryCodeInputs';
 export type Country = {
   name: string;
   callingCodes: string[];
-};
-
-type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
-
-type Props = {
-  navigation?: MainScreenNavigationProp;
 };
 
 const styles = StyleSheet.create({
@@ -72,7 +64,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddNewContactModal: React.FC<Props> = ({navigation}) => {
+const AddNewContactModal: React.FC<any> = ({navigation}) => {
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [sex, setGender] = useState<string>('');
