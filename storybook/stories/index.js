@@ -9,8 +9,8 @@ import Welcome from './Welcome';
 import ContactItemStory from './ContactList/contactItem';
 import SearchStory from './ContactList/search';
 import EmptyContactListStory from './ContactList/emptyContactList';
-import CountryCodePickersStory from './ContactList/countryCodePickers';
-import CountryCodeInputsStory from './ContactList/countryCodeInputs';
+import CountryCodePickersStory from './Form/countryCodePickers';
+import CountryCodeInputsStory from './Form/countryCodeInputs';
 
 storiesOf('Welcome', module).add('to Storybook', () => (
   <Welcome showApp={linkTo('Button')} />
@@ -32,10 +32,10 @@ storiesOf('ContactList/Empty', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
   .add('Default', () => <EmptyContactListStory />);
 
-storiesOf('Form/CountryCode Inputs', module)
-  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('Default', () => <CountryCodeInputsStory />);
+storiesOf('Form/CountryCode Inputs', module).add('Default', () => (
+  <CountryCodeInputsStory />
+));
 
-storiesOf('Form/CountryCode Pickers', module)
-  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('Default', () => <CountryCodePickersStory />);
+storiesOf('Form/CountryCode Pickers', module).add('Default', () => (
+  <CountryCodePickersStory />
+));

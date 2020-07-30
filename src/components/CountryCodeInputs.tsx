@@ -29,12 +29,12 @@ const CountryCodeInputs = ({
   const [code, setCode] = useState('');
 
   return (
-    <>
-      <View style={{alignItems: 'center'}}>
+    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+      <View style={{flex: 1}}>
         <Text style={styles.label}>Country:</Text>
         <TextInput
           placeholder="Type your country"
-          style={[styles.formControl, styles.textInput, {width: 200}]}
+          style={[styles.formControl, styles.textInput]}
           onChangeText={(text) => {
             setCountry(text);
             onCountryUpdate(text);
@@ -43,11 +43,11 @@ const CountryCodeInputs = ({
           maxLength={30}
         />
       </View>
-      <View style={{alignItems: 'center'}}>
+      <View style={{width: 150, marginLeft: 20}}>
         <Text style={styles.label}>Code:</Text>
         <TextInput
           placeholder="Type your code"
-          style={[styles.formControl, styles.textInput, {width: 150}]}
+          style={[styles.formControl, styles.textInput]}
           onChangeText={(text) => {
             setCode(text);
             onCodeUpdate(text);
@@ -56,7 +56,7 @@ const CountryCodeInputs = ({
           maxLength={30}
         />
       </View>
-    </>
+    </View>
   );
 };
 

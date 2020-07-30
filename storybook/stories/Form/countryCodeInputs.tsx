@@ -1,9 +1,12 @@
 import React from 'react';
 import CountryCodeInputs from '../../../src/components/CountryCodeInputs';
+import {View} from 'react-native';
 
 const CountryCodeInputsStory = () => {
   return (
-    <CountryCodeInputs onCountryUpdate={() => {}} onCodeUpdate={() => {}} />
+    <View style={{flex: 1}}>
+      <CountryCodeInputs onCountryUpdate={() => {}} onCodeUpdate={() => {}} />
+    </View>
   );
 };
 
