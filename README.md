@@ -1,4 +1,4 @@
-# Phonebook app 
+# Phonebook app
 
 Created in React Native + typescript.
 
@@ -11,6 +11,7 @@ In order to run the app in Storybook mode you need to export in App.tsx:
 ```bash
 export default from './storybook';
 ```
+
 then run the following commands
 
 ```bash
@@ -23,9 +24,11 @@ For Android $ yarn android
 ### App mode
 
 In order to run the app you need to make sure that you have the correct default export in App.tsx:
+
 ```bash
 export default from './storybook';
 ```
+
 then run the following commands
 
 ```bash
@@ -45,6 +48,8 @@ For Android $ yarn android
 - Add contact form search country filter
 - Add contact form input types for country and code if fetching data is not available
 - Save contacts and countries data in phone storage.
+- Snapshot tests
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

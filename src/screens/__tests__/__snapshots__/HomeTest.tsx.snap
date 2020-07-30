@@ -7,40 +7,36 @@ Array [
       Object {
         "alignItems": "center",
         "flexDirection": "row",
+        "justifyContent": "space-between",
+        "paddingHorizontal": 10,
         "paddingTop": 20,
       }
     }
   >
-    <View
+    <TextInput
+      allowFontScaling={true}
+      autoCorrect={false}
+      onChangeText={[Function]}
+      placeholder="Search by names and numbers:"
+      rejectResponderTermination={true}
       style={
         Object {
-          "padding": 10,
+          "backgroundColor": "#fafafb",
+          "borderColor": "grey",
+          "borderRadius": 20,
+          "borderWidth": 0.5,
+          "flex": 1,
+          "fontSize": 18,
+          "height": 45,
+          "marginVertical": 10,
+          "maxHeight": 45,
+          "paddingHorizontal": 20,
+          "paddingVertical": 10,
         }
       }
-    >
-      <TextInput
-        allowFontScaling={true}
-        autoCorrect={false}
-        onChangeText={[Function]}
-        placeholder="Search by names and numbers:"
-        rejectResponderTermination={true}
-        style={
-          Object {
-            "backgroundColor": "#fafafb",
-            "borderColor": "grey",
-            "borderRadius": 20,
-            "borderWidth": 0.5,
-            "fontSize": 18,
-            "marginVertical": 10,
-            "paddingHorizontal": 20,
-            "paddingVertical": 10,
-            "width": 345,
-          }
-        }
-        underlineColorAndroid="transparent"
-        value=""
-      />
-    </View>
+      underlineColorAndroid="transparent"
+      value=""
+    />
     <View
       accessible={true}
       focusable={true}
@@ -59,6 +55,7 @@ Array [
           "flexDirection": "row",
           "height": 40,
           "justifyContent": "center",
+          "marginLeft": 20,
           "minWidth": 40,
           "opacity": 1,
         }
@@ -136,6 +133,7 @@ Array [
           Object {
             "alignItems": "center",
             "justifyContent": "center",
+            "marginTop": 50,
           }
         }
       >
@@ -149,7 +147,7 @@ Array [
               },
               Object {
                 "fontSize": 70,
-                "marginBottom": 50,
+                "marginBottom": 30,
               },
               Object {
                 "fontFamily": "Fontisto",

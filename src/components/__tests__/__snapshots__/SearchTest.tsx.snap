@@ -1,34 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly with defaults 1`] = `
-<View
+<TextInput
+  allowFontScaling={true}
+  autoCorrect={false}
+  onChangeText={[Function]}
+  placeholder="Search by names and numbers:"
+  rejectResponderTermination={true}
   style={
     Object {
-      "padding": 10,
+      "backgroundColor": "#fafafb",
+      "borderColor": "grey",
+      "borderRadius": 20,
+      "borderWidth": 0.5,
+      "flex": 1,
+      "fontSize": 18,
+      "height": 45,
+      "marginVertical": 10,
+      "maxHeight": 45,
+      "paddingHorizontal": 20,
+      "paddingVertical": 10,
     }
   }
->
-  <TextInput
-    allowFontScaling={true}
-    autoCorrect={false}
-    onChangeText={[Function]}
-    placeholder="Search by names and numbers:"
-    rejectResponderTermination={true}
-    style={
-      Object {
-        "backgroundColor": "#fafafb",
-        "borderColor": "grey",
-        "borderRadius": 20,
-        "borderWidth": 0.5,
-        "fontSize": 18,
-        "marginVertical": 10,
-        "paddingHorizontal": 20,
-        "paddingVertical": 10,
-        "width": 345,
-      }
-    }
-    underlineColorAndroid="transparent"
-    value=""
-  />
-</View>
+  underlineColorAndroid="transparent"
+  value=""
+/>
 `;

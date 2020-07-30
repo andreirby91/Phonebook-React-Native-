@@ -6,6 +6,7 @@ exports[`renders correctly with defaults 1`] = `
     Object {
       "alignItems": "center",
       "justifyContent": "center",
+      "marginTop": 50,
     }
   }
 >
@@ -19,7 +20,7 @@ exports[`renders correctly with defaults 1`] = `
         },
         Object {
           "fontSize": 70,
-          "marginBottom": 50,
+          "marginBottom": 30,
         },
         Object {
           "fontFamily": "Fontisto",
