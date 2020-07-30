@@ -46,9 +46,10 @@ const styles = StyleSheet.create({
     height: 50,
     padding: 10,
     borderColor: 'gray',
-    borderWidth: 1,
+    borderWidth: 0.5,
     marginTop: 10,
     fontSize: 17,
+    borderRadius: 6,
   },
   noCode: {
     marginTop: 40,

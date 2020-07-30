@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   input: {
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: 'grey',
     backgroundColor: '#fafafb',
     paddingHorizontal: 20,

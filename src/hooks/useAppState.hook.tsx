@@ -47,10 +47,6 @@ export const useAppState = (): AppStateContext => {
   async function getCountriesDataFromStorage() {
     try {
       const countriesData = await AsyncStorage.getItem('@countries_data');
-      console.log(
-        'countriesData: ',
-        countriesData != null ? JSON.parse(countriesData) : [],
-      );
       setState((state) => ({
         ...state,
         countriesList: countriesData != null ? JSON.parse(countriesData) : [],
@@ -70,10 +66,6 @@ export const useAppState = (): AppStateContext => {
   async function getContactsFromStorage() {
     try {
       const contactsList = await AsyncStorage.getItem('@contacts_list');
-      console.log(
-        'contactsList: ',
-        contactsList != null ? JSON.parse(contactsList) : [],
-      );
       setState((state) => ({
         ...state,
         contactsList: contactsList != null ? JSON.parse(contactsList) : [],

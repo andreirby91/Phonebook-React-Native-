@@ -1,16 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, FlatList} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../App';
 import ContactItem from '../components/ContactItem';
 import Search from '../components/Search';
 import EmptyContactList from '../components/EmptyContactList';
 import AppStateContext from '../context/app.context';
+import PrimaryButton from '../components/PrimaryButton';
 
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
 type Props = {
-  navigation: MainScreenNavigationProp;
+  navigation?: MainScreenNavigationProp;
 };
 
 export type Contact = {
@@ -88,16 +89,23 @@ const Home = ({navigation}: Props) => {
         <Text>No contacts found!</Text>
       </View>
     ) : (
-      <EmptyContactList onPress={() => navigation.navigate('AddNewContact')} />
+      <EmptyContactList
+        onPress={() =>
+          navigation ? navigation.navigate('AddNewContact') : null
+        }
+      />
     );
   };
 
   return (
     <>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate('AddNewContact')}>
-          <Text>Add new contact</Text>
-        </TouchableOpacity>
+        <PrimaryButton
+          title="Add new contact"
+          onPress={() =>
+            navigation ? navigation.navigate('AddNewContact') : null
+          }
+        />
         <Search
           searchValue={searchValue}
           onChangeText={(text: string) => handleSearch(text)}

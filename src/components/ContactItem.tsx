@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Animated, TouchableOpacity} from 'react-native';
 import Swipable from 'react-native-gesture-handler/Swipeable';
+import FontistoIcon from 'react-native-vector-icons/Fontisto';
 
 type Props = {
   name: string;
@@ -18,15 +19,24 @@ type RightActions = {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   actionText: {
     color: '#fff',
     fontWeight: '600',
-    padding: 20,
+    padding: 18,
+    fontSize: 18,
   },
   rightAction: {
     backgroundColor: '#dd2c00',
     justifyContent: 'center',
     alignItems: 'flex-end',
+    borderRadius: 4,
+  },
+  text: {
+    fontSize: 18,
   },
 });
 
@@ -65,10 +75,16 @@ const ContactItem: React.FC<Props> = ({
           onPress={onRightPress}
         />
       )}>
-      <View>
-        <Text>{name}</Text>
-        <Text>Sex: {sex}</Text>
-        <Text>{`${code} ${phone} (${country})`}</Text>
+      <View style={styles.container}>
+        <FontistoIcon name="female" />
+        <View>
+          <Text style={[styles.text, {marginBottom: 5}]}>{name}</Text>
+          <Text
+            style={[
+              styles.text,
+              {marginBottom: 5},
+            ]}>{`${code} ${phone} (${country})`}</Text>
+        </View>
       </View>
     </Swipable>
   );
