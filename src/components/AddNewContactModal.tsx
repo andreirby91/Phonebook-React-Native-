@@ -91,7 +91,7 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
   const handleSubmit = () => {
     if (!name || !phone || !sex || !country) {
       let message = 'Please update all the fields in order to save a contact!';
-      Alert.alert(message);
+      Alert.alert('Invalid Form', message);
       return;
     }
 

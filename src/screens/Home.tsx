@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Alert} from 'react-native';
 import ContactItem from '../components/ContactItem';
 import Search from '../components/Search';
 import EmptyContactList from '../components/EmptyContactList';
@@ -125,7 +125,21 @@ const Home: React.FC<any> = ({navigation}) => {
               sex={sex}
               country={country}
               code={code}
-              onRightPress={() => handleDelete(id)}
+              onRightPress={() => {
+                Alert.alert(
+                  'Delete confirmation',
+                  'Are you sure you want to delete contact?',
+                  [
+                    {
+                      text: 'Cancel',
+                      onPress: () => {},
+                      style: 'cancel',
+                    },
+                    {text: 'DELETE', onPress: () => handleDelete(id)},
+                  ],
+                  {cancelable: false},
+                );
+              }}
             />
           );
         }}

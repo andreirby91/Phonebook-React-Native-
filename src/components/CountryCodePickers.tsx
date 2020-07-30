@@ -20,9 +20,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   noCode: {
-    marginTop: 40,
     fontSize: 20,
     width: 150,
+    paddingVertical: 11.5,
     textAlign: 'center',
   },
   countryCodePicker: {
