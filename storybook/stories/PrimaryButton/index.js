@@ -2,10 +2,11 @@ import React from 'react';
 import PrimaryButton from '../../../src/components/PrimaryButton';
 import {Alert} from 'react-native';
 
-const PrimaryButtonStory = () => {
+const PrimaryButtonStory = ({hasIcon, title}) => {
   return (
     <PrimaryButton
-      title="Primary Button"
+      title={title}
+      hasIcon={hasIcon}
       onPress={() => Alert.alert('Button pressed!')}
     />
   );

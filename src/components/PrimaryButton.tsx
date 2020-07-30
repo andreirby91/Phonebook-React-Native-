@@ -7,6 +7,7 @@ type Props = {
   title?: string;
   customStyle?: ViewStyle;
   hasIcon?: boolean;
+  iconName?: string;
 };
 
 const styles = StyleSheet.create({
@@ -37,12 +38,18 @@ const PrimaryButton: React.FC<Props> = ({
   title,
   customStyle,
   hasIcon,
+  iconName,
 }) => {
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.button, customStyle, hasIcon ? styles.iconStyle : null]}>
-      {hasIcon ? <FontistoIcon name="plus-a" style={styles.icon} /> : null}
+      {hasIcon ? (
+        <FontistoIcon
+          name={iconName ? iconName : 'picture'}
+          style={styles.icon}
+        />
+      ) : null}
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
   );

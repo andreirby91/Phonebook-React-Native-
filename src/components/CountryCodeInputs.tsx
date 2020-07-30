@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flex: 1,
+  },
   textInput: {
     height: 50,
     padding: 10,
@@ -29,7 +34,7 @@ const CountryCodeInputs = ({
   const [code, setCode] = useState('');
 
   return (
-    <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+    <View style={styles.container}>
       <View style={{flex: 1}}>
         <Text style={styles.label}>Country:</Text>
         <TextInput

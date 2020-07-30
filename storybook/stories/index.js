@@ -18,7 +18,8 @@ storiesOf('Welcome', module).add('to Storybook', () => (
 
 storiesOf('PrimaryButton', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
-  .add('default', () => <PrimaryButtonStory />);
+  .add('default', () => <PrimaryButtonStory title="Primary Button" />)
+  .add('withIcon', () => <PrimaryButtonStory hasIcon={true} />);
 
 storiesOf('ContactList/Item', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
