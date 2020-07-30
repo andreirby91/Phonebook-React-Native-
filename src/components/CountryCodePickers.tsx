@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
   countryCodePicker: {height: 110, width: 150},
   countryFilterInput: {
     height: 40,
-    width: 150,
+    width: 180,
     padding: 10,
+    paddingHorizontal: 20,
     borderColor: '#ddd',
     borderWidth: 1,
     borderRadius: 20,
@@ -124,7 +125,8 @@ const CountryCodePickers = ({
           }}
           onSubmitEditing={() => setSearchValue('')}
           onBlur={() => setSearchValue('')}
-          placeholder="Type your country"
+          autoCorrect={false}
+          placeholder="Search your country"
         />
         <Picker
           itemStyle={styles.countryCodePicker}

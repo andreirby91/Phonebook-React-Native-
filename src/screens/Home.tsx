@@ -91,7 +91,7 @@ const Home: React.FC<any> = ({navigation}) => {
         <Text style={styles.emptyListText}>No contacts found!</Text>
       </View>
     ) : (
-      <EmptyContactList onPress={() => navigation.navigate('AddNewContact')} />
+      <EmptyContactList onPress={() => navigation.navigate('AddContact')} />
     );
   };
 
@@ -105,7 +105,7 @@ const Home: React.FC<any> = ({navigation}) => {
         <PrimaryButton
           hasIcon={true}
           onPress={() =>
-            navigation ? navigation.navigate('AddNewContact') : null
+            navigation ? navigation.navigate('AddContact') : null
           }
           customStyle={{minWidth: 40, height: 40}}
         />

@@ -31,6 +31,7 @@ const Search = ({
         style={styles.input}
         value={searchValue}
         onChangeText={onChangeText}
+        autoCorrect={false}
         placeholder="Search by names and numbers:"
       />
     </View>

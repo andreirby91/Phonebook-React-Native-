@@ -90,11 +90,7 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
 
   const handleSubmit = () => {
     if (!name || !phone || !sex || !country) {
-      let message = `"${!name ? 'Name ' : ''} ${!phone ? 'Phone ' : ''} ${
-        !sex ? 'Gender ' : ''
-      } ${!country ? 'Country ' : ' '}" are not filled.
-      
-      Please update them in order to save a contact!`;
+      let message = 'Please update all the fields in order to save a contact!';
       Alert.alert(message);
       return;
     }

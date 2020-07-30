@@ -7,12 +7,12 @@ import AppStateContext from './src/context/app.context';
 import {useAppState} from './src/hooks/useAppState.hook';
 
 export type MainStackParamList = {
-  Home: undefined;
+  Phonebook: undefined;
 };
 
 export type RootStackParamList = {
-  Main: undefined;
-  AddNewContact: undefined;
+  Phonebook: undefined;
+  AddContact: undefined;
 };
 
 const MainStack = createStackNavigator<MainStackParamList>();
@@ -21,7 +21,7 @@ const RootStack = createStackNavigator<RootStackParamList>();
 const MainStackScreen = () => {
   return (
     <MainStack.Navigator>
-      <MainStack.Screen name="Home" component={Home} />
+      <MainStack.Screen name="Phonebook" component={Home} />
     </MainStack.Navigator>
   );
 };
@@ -34,13 +34,14 @@ const App = () => {
       <NavigationContainer>
         <RootStack.Navigator mode="modal">
           <RootStack.Screen
-            name="Main"
+            name="Phonebook"
             component={MainStackScreen}
             options={{headerShown: false}}
           />
           <RootStack.Screen
-            name="AddNewContact"
+            name="AddContact"
             component={AddNewContactModal}
+            options={{title: 'Add contact'}}
           />
         </RootStack.Navigator>
       </NavigationContainer>
