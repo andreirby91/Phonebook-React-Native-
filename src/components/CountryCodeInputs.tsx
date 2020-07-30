@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     padding: 10,
-    borderColor: 'gray',
+    borderColor: 'grey',
     borderWidth: 1,
     marginTop: 10,
     fontSize: 17,

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     padding: 10,
-    borderColor: 'gray',
+    borderColor: 'grey',
     borderWidth: 1,
     marginTop: 10,
     fontSize: 17,
@@ -28,15 +28,20 @@ const styles = StyleSheet.create({
   countryCodePicker: {
     height: 110,
   },
-  countryFilterInput: {
-    height: 40,
-    width: 180,
-    padding: 10,
-    paddingHorizontal: 20,
+  formControlWrapper: {
+    borderWidth: 0.5,
     borderColor: 'grey',
-    borderWidth: 1,
-    borderRadius: 20,
-    marginVertical: 10,
+    borderRadius: 4,
+    marginTop: 10,
+  },
+  countryFilter: {
+    fontSize: 17,
+    paddingHorizontal: 10,
+    height: 50,
+    borderWidth: 0.5,
+    borderRadius: 4,
+    marginTop: 10,
+    borderColor: 'grey',
   },
 });
 
@@ -89,36 +94,17 @@ const CountryCodePickers = ({
     });
 
     return (
-      <View style={{width: 150}}>
+      <View style={{width: 150, marginLeft: 20}}>
         <Text style={styles.label}>Code:</Text>
         {!codes[0] ? (
-          <View
-            style={[
-              styles.formControl,
-              {
-                borderWidth: 0.5,
-                borderColor: 'grey',
-                borderRadius: 4,
-                marginTop: 10,
-              },
-            ]}>
+          <View style={[styles.formControl, styles.formControlWrapper]}>
             <Text style={styles.noCode}>N/A</Text>
           </View>
         ) : (
-          <View
-            style={[
-              styles.formControl,
-              {
-                borderWidth: 0.5,
-                borderColor: 'grey',
-                borderRadius: 4,
-                marginTop: 10,
-              },
-            ]}>
+          <View style={[styles.formControl, styles.formControlWrapper]}>
             <Picker
-              itemStyle={[styles.countryCodePicker, {textAlign: 'center'}]}
+              itemStyle={[styles.countryCodePicker]}
               selectedValue={code}
-              style={{width: 150}}
               onValueChange={(value) => {
                 setCode(value.toString());
                 onCodeUpdate(value.toString());
@@ -137,22 +123,12 @@ const CountryCodePickers = ({
     });
 
     return (
-      <View style={{flex: 1, marginRight: 20}}>
+      <View style={{flex: 1}}>
         <Text style={styles.label}>Country:</Text>
-        <View
-          style={[
-            styles.formControl,
-            {
-              borderWidth: 0.5,
-              borderRadius: 4,
-              marginTop: 10,
-              borderColor: 'grey',
-            },
-          ]}>
+        <View style={[styles.formControl, styles.formControlWrapper]}>
           <Picker
             itemStyle={styles.countryCodePicker}
             selectedValue={country}
-            style={[{width: 200}]}
             onValueChange={(value) => onCountryValueChange(value.toString())}>
             {countries.length > filteredCountries.length
               ? renderCountryItems
@@ -169,18 +145,7 @@ const CountryCodePickers = ({
   return (
     <View style={{flex: 1}}>
       <TextInput
-        style={[
-          styles.formControl,
-          {
-            fontSize: 17,
-            paddingHorizontal: 10,
-            height: 50,
-            borderWidth: 0.5,
-            borderRadius: 4,
-            marginTop: 10,
-            borderColor: 'grey',
-          },
-        ]}
+        style={[styles.formControl, styles.countryFilter]}
         value={searchValue}
         onChangeText={(value) => {
           setSearchValue(value);

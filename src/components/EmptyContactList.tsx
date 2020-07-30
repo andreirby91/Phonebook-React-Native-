@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 50,
   },
   text: {
     textAlign: 'center',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 70,
-    marginBottom: 50,
+    marginBottom: 30,
   },
 });
 

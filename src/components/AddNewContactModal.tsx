@@ -38,30 +38,24 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     padding: 10,
-    borderColor: 'gray',
+    borderColor: 'grey',
     borderWidth: 0.5,
     marginTop: 10,
     fontSize: 17,
     borderRadius: 6,
   },
-  noCode: {
-    marginTop: 40,
-    fontSize: 20,
+  countryCodePicker: {
+    height: 110,
     width: 150,
-    textAlign: 'center',
-  },
-  countryCodePicker: {height: 110, width: 150},
-  countryFilterInput: {
-    height: 40,
-    width: 150,
-    padding: 10,
-    borderColor: '#ddd',
-    borderWidth: 1,
-    borderRadius: 20,
-    marginVertical: 10,
   },
   submitBtn: {
     marginTop: 20,
+  },
+  pickerWrapper: {
+    borderWidth: 0.5,
+    borderRadius: 4,
+    marginTop: 10,
+    borderColor: 'grey',
   },
 });
 
@@ -150,16 +144,7 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
           )}
         </View>
         <Text style={styles.label}>Gender:</Text>
-        <View
-          style={[
-            styles.formControl,
-            {
-              borderWidth: 0.5,
-              borderRadius: 4,
-              marginTop: 10,
-              borderColor: 'grey',
-            },
-          ]}>
+        <View style={[styles.formControl, styles.pickerWrapper]}>
           <Picker
             itemStyle={{height: 110}}
             selectedValue={sex}

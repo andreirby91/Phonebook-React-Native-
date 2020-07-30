@@ -44,6 +44,11 @@ const styles = StyleSheet.create({
     fontSize: 50,
     marginBottom: 10,
   },
+  addContact: {
+    minWidth: 40,
+    height: 40,
+    marginLeft: 20,
+  },
 });
 
 const Home: React.FC<any> = ({navigation}) => {
@@ -109,7 +114,7 @@ const Home: React.FC<any> = ({navigation}) => {
           onPress={() =>
             navigation ? navigation.navigate('AddContact') : null
           }
-          customStyle={{minWidth: 40, height: 40, marginLeft: 20}}
+          customStyle={styles.addContact}
         />
       </View>
       <FlatList
