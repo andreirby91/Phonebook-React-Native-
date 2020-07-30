@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+<View
+  style={Object {}}
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 20,
+        "marginBottom": 20,
+        "textAlign": "center",
+      }
+    }
+  >
+    No contacts available!
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#0984e3",
+        "borderRadius": 30,
+        "height": 50,
+        "justifyContent": "center",
+        "minWidth": 200,
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 18,
+        }
+      }
+    >
+      Add new contact
+    </Text>
+  </View>
+</View>
+`;

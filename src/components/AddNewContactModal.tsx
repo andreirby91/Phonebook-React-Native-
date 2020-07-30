@@ -24,7 +24,7 @@ export type Country = {
 type MainScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
 type Props = {
-  navigation: MainScreenNavigationProp;
+  navigation?: MainScreenNavigationProp;
 };
 
 const styles = StyleSheet.create({
@@ -117,7 +117,7 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
     };
 
     addContact(newContact);
-    navigation.goBack();
+    navigation ? navigation.goBack() : null;
   };
 
   return (

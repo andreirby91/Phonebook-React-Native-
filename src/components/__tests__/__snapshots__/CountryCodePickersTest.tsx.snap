@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Country:
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Type your country"
+      rejectResponderTermination={true}
+      style={
+        Object {
+          "borderColor": "#ddd",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "height": 40,
+          "marginVertical": 10,
+          "padding": 10,
+          "width": 150,
+        }
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      style={
+        Object {
+          "marginBottom": 25,
+        }
+      }
+    >
+      <RNCPicker
+        items={
+          Array [
+            Object {
+              "label": "Select country",
+              "textColor": undefined,
+              "value": "",
+            },
+          ]
+        }
+        onChange={[Function]}
+        selectedIndex={0}
+        style={
+          Array [
+            Object {
+              "height": 216,
+            },
+            Object {
+              "height": 110,
+              "width": 150,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>,
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Code:
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+          "marginTop": 40,
+          "textAlign": "center",
+          "width": 150,
+        }
+      }
+    >
+      N/A
+    </Text>
+  </View>,
+]
+`;

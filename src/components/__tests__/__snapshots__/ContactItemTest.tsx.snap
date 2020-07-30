@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+<View
+  collapsable={false}
+  forwardedRef={[Function]}
+  onGestureHandlerEvent={[Function]}
+  onGestureHandlerStateChange={[Function]}
+  onLayout={[Function]}
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "bottom": 0,
+        "flexDirection": "row-reverse",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "translateX": -10000,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "backgroundColor": "#dd2c00",
+            "borderRadius": 4,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 18,
+              "fontWeight": "600",
+              "padding": 18,
+              "transform": Array [
+                Object {
+                  "scale": 0,
+                },
+              ],
+            }
+          }
+        >
+          Delete
+        </Text>
+      </View>
+    </View>
+    <View
+      onLayout={[Function]}
+    />
+  </View>
+  <View
+    collapsable={false}
+    forwardedRef={[Function]}
+    onGestureHandlerEvent={[Function]}
+    onGestureHandlerStateChange={[Function]}
+    pointerEvents="auto"
+    style={
+      Object {
+        "transform": Array [
+          Object {
+            "translateX": -0,
+          },
+        ],
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        allowFontScaling={false}
+        style={
+          Array [
+            Object {
+              "color": undefined,
+              "fontSize": 12,
+            },
+            undefined,
+            Object {
+              "fontFamily": "Fontisto",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+      >
+        
+      </Text>
+      <View>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 18,
+              },
+              Object {
+                "marginBottom": 5,
+              },
+            ]
+          }
+        >
+          Andrei Beraru
+        </Text>
+        <Text
+          style={
+            Array [
+              Object {
+                "fontSize": 18,
+              },
+              Object {
+                "marginBottom": 5,
+              },
+            ]
+          }
+        >
+          40 0763111111 (Romania)
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

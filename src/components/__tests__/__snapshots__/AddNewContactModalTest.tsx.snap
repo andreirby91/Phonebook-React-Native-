@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "paddingHorizontal": 20,
+      "paddingVertical": 50,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Name:
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      autoFocus={true}
+      maxLength={30}
+      onChangeText={[Function]}
+      placeholder="Type your name"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "marginBottom": 25,
+          },
+          Object {
+            "borderColor": "gray",
+            "borderRadius": 6,
+            "borderWidth": 0.5,
+            "fontSize": 17,
+            "height": 50,
+            "marginTop": 10,
+            "padding": 10,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Phone:
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      keyboardType="numeric"
+      maxLength={20}
+      onChangeText={[Function]}
+      placeholder="Phone"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "marginBottom": 25,
+          },
+          Object {
+            "borderColor": "gray",
+            "borderRadius": 6,
+            "borderWidth": 0.5,
+            "fontSize": 17,
+            "height": 50,
+            "marginTop": 10,
+            "padding": 10,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+        >
+          Country:
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          maxLength={30}
+          onChangeText={[Function]}
+          placeholder="Type your country"
+          rejectResponderTermination={true}
+          style={
+            Array [
+              Object {
+                "marginBottom": 25,
+              },
+              Object {
+                "borderColor": "gray",
+                "borderWidth": 1,
+                "fontSize": 17,
+                "height": 50,
+                "marginTop": 10,
+                "padding": 10,
+              },
+              Object {
+                "width": 200,
+              },
+            ]
+          }
+          underlineColorAndroid="transparent"
+          value=""
+        />
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 20,
+            }
+          }
+        >
+          Code:
+        </Text>
+        <TextInput
+          allowFontScaling={true}
+          maxLength={30}
+          onChangeText={[Function]}
+          placeholder="Type your code"
+          rejectResponderTermination={true}
+          style={
+            Array [
+              Object {
+                "marginBottom": 25,
+              },
+              Object {
+                "borderColor": "gray",
+                "borderWidth": 1,
+                "fontSize": 17,
+                "height": 50,
+                "marginTop": 10,
+                "padding": 10,
+              },
+              Object {
+                "width": 150,
+              },
+            ]
+          }
+          underlineColorAndroid="transparent"
+          value=""
+        />
+      </View>
+    </View>
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Gender:
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": 25,
+        }
+      }
+    >
+      <RNCPicker
+        items={
+          Array [
+            Object {
+              "label": "Select gender",
+              "textColor": undefined,
+              "value": "",
+            },
+            Object {
+              "label": "Male",
+              "textColor": undefined,
+              "value": "male",
+            },
+            Object {
+              "label": "Female",
+              "textColor": undefined,
+              "value": "female",
+            },
+          ]
+        }
+        onChange={[Function]}
+        selectedIndex={0}
+        style={
+          Array [
+            Object {
+              "height": 216,
+            },
+            Object {
+              "height": 110,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#0984e3",
+          "borderRadius": 30,
+          "height": 50,
+          "justifyContent": "center",
+          "marginTop": 20,
+          "minWidth": 200,
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 18,
+          }
+        }
+      >
+        Add contact
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;

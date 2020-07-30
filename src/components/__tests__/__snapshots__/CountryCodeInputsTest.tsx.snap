@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+Array [
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Country:
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      maxLength={30}
+      onChangeText={[Function]}
+      placeholder="Type your country"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "marginBottom": 25,
+          },
+          Object {
+            "borderColor": "gray",
+            "borderWidth": 1,
+            "fontSize": 17,
+            "height": 50,
+            "marginTop": 10,
+            "padding": 10,
+          },
+          Object {
+            "width": 200,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </View>,
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 20,
+        }
+      }
+    >
+      Code:
+    </Text>
+    <TextInput
+      allowFontScaling={true}
+      maxLength={30}
+      onChangeText={[Function]}
+      placeholder="Type your code"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "marginBottom": 25,
+          },
+          Object {
+            "borderColor": "gray",
+            "borderWidth": 1,
+            "fontSize": 17,
+            "height": 50,
+            "marginTop": 10,
+            "padding": 10,
+          },
+          Object {
+            "width": 150,
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+      value=""
+    />
+  </View>,
+]
+`;
