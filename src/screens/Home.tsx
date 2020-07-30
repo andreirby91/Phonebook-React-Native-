@@ -46,7 +46,13 @@ const Home = ({navigation}: Props) => {
   const [searchValue, setSearchValue] = useState<string>('');
   const [myContacts, setMyContacts] = useState<Contact[]>([]);
   const [filteredContacts, setFilteredContacts] = useState<Contact[]>([]);
-  const {contactsList, removeContact} = useContext(AppStateContext);
+  const {contactsList, getContactsFromStorage, removeContact} = useContext(
+    AppStateContext,
+  );
+
+  useEffect(() => {
+    getContactsFromStorage();
+  }, []);
 
   useEffect(() => {
     handleContactUpdates(contactsList);

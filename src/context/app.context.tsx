@@ -4,16 +4,22 @@ import {Country} from '../components/AddNewContactModal';
 
 export interface AppStateContext {
   contactsList: Contact[];
-  countriesData: Country[];
+  countriesList: Country[];
   addContact: (contact: Contact) => void;
   removeContact: (contactId: number) => void;
+  getContactsFromStorage: () => void;
+  setCountriesDataToStorage: (countries: Country[]) => void;
+  getCountriesDataFromStorage: () => void;
 }
 
 export const DEFAULT_VALUE = {
   contactsList: [],
-  countriesData: [],
+  countriesList: [],
   addContact: () => {},
   removeContact: () => {},
+  getContactsFromStorage: () => {},
+  setCountriesDataToStorage: () => {},
+  getCountriesDataFromStorage: () => {},
 };
 
 const AppStateContext = React.createContext<AppStateContext>(DEFAULT_VALUE);

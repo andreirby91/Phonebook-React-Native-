@@ -29,6 +29,7 @@ const MainStackScreen = () => {
 
 const App = () => {
   const appState = useAppState();
+
   return (
     <AppStateContext.Provider value={appState}>
       <NavigationContainer>

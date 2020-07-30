@@ -13,6 +13,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../App';
 import {Contact} from '../screens/Home';
 import AppStateContext from '../context/app.context';
+import CountryCodePickers from './CountryCodePickers';
+import CountryCodeInputs from './CountryCodeInputs';
 
 export type Country = {
   name: string;
@@ -74,27 +76,17 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
   const [phone, setPhone] = useState<string>('');
   const [sex, setGender] = useState<string>('');
   const [country, setCountry] = useState<string>('');
-  const [searchValue, setSearchValue] = useState<string>('');
   const [code, setCode] = useState<string>('');
-  const [countries, setCountries] = useState<Array<string>>([]);
-  const [filteredCountries, setFilteredCountries] = useState<Array<string>>([]);
-  const [codes, setCodes] = useState<Array<string>>([]);
-  const [countriesData, setCountriesData] = useState<Country[]>([]);
-  const {contactsList, addContact} = useContext(AppStateContext);
+  const {
+    contactsList,
+    countriesList,
+    addContact,
+    getCountriesDataFromStorage,
+  } = useContext(AppStateContext);
 
   useEffect(() => {
-    handleRequest();
+    getCountriesDataFromStorage();
   }, []);
-
-  const handleRequest = async () => {
-    const request = await fetch(
-      'https://restcountries.eu/rest/v2/all?fields=name;callingCodes',
-    );
-    const response = await request.json();
-    setCountries(response.map((country: Country) => country.name));
-    setFilteredCountries(response.map((country: Country) => country.name));
-    setCountriesData(response);
-  };
 
   const handleSubmit = () => {
     if (!name || !phone || !sex || !country) {
@@ -107,55 +99,25 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
       return;
     }
 
-    const id =
-      (Math.max.apply(
-        Math,
-        contactsList.map((contact: Contact) => contact.id),
-      ) || 0) + 1;
+    const id = contactsList.length
+      ? Math.max.apply(
+          Math,
+          contactsList.map((contact: Contact) => contact.id),
+        ) + 1
+      : 0;
 
     const newContact = {
-      id: 0,
+      id,
       name,
       phone,
       sex,
       country,
       code,
     };
-    console.log('newContact: ', newContact);
+
     addContact(newContact);
     navigation.goBack();
   };
-
-  const onCountryValueChange = (value: string | number) => {
-    setCountry(value.toString());
-    const codesByCountry = countriesData.filter(
-      (country) => country.name === value,
-    );
-    setCodes(codesByCountry.length ? codesByCountry[0].callingCodes : []);
-    setCode(codesByCountry.length ? codesByCountry[0].callingCodes[0] : '');
-  };
-
-  const CodePicker = () => {
-    return !codes[0] ? (
-      <Text style={styles.noCode}>N/A</Text>
-    ) : (
-      <Picker
-        itemStyle={styles.countryCodePicker}
-        selectedValue={code}
-        style={styles.formControl}
-        onValueChange={(value) => setCode(value.toString())}>
-        {codeItems}
-      </Picker>
-    );
-  };
-
-  const codeItems = codes.map((code) => {
-    return <Picker.Item label={code} value={code} key={code} />;
-  });
-
-  const countryItems = filteredCountries.map((country) => {
-    return <Picker.Item label={country} value={country} key={country} />;
-  });
 
   return (
     <ScrollView style={styles.container}>
@@ -178,43 +140,17 @@ const AddNewContactModal: React.FC<Props> = ({navigation}) => {
         maxLength={20}
       />
       <View style={styles.countryCode}>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.label}>Country:</Text>
-          <TextInput
-            style={styles.countryFilterInput}
-            value={searchValue}
-            onChangeText={(value) => {
-              setSearchValue(value);
-              const countryFilter = countries.filter((country) =>
-                country.startsWith(value),
-              );
-              setFilteredCountries(countryFilter);
-              if (countryFilter.length === 1) {
-                onCountryValueChange(countryFilter[0]);
-              }
-            }}
-            onSubmitEditing={() => setSearchValue('')}
-            placeholder="Type your country"
+        {countriesList.length ? (
+          <CountryCodePickers
+            onCodeUpdate={(code) => setCode(code)}
+            onCountryUpdate={(country) => setCountry(country)}
           />
-          <Picker
-            itemStyle={styles.countryCodePicker}
-            selectedValue={country}
-            style={styles.formControl}
-            onValueChange={(value: string | number) =>
-              onCountryValueChange(value)
-            }>
-            {countries.length > filteredCountries.length
-              ? countryItems
-              : [
-                  <Picker.Item label="Select country" value="" key="none" />,
-                  ...countryItems,
-                ]}
-          </Picker>
-        </View>
-        <View style={{alignItems: 'center'}}>
-          <Text style={styles.label}>Code:</Text>
-          <CodePicker />
-        </View>
+        ) : (
+          <CountryCodeInputs
+            onCodeUpdate={(code) => setCode(code)}
+            onCountryUpdate={(country) => setCountry(country)}
+          />
+        )}
       </View>
       <Text style={styles.label}>Gender:</Text>
       <Picker
