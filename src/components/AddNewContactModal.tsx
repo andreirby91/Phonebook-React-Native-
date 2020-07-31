@@ -106,7 +106,7 @@ const AddNewContactModal: React.FC<any> = ({navigation}) => {
     };
 
     addContact(newContact);
-    navigation ? navigation.goBack() : null;
+    navigation.goBack();
   };
 
   return (

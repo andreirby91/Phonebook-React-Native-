@@ -3,7 +3,7 @@ import {Alert} from 'react-native';
 export async function getCountriesData() {
   try {
     const request = await fetch(
-      'https://restcountries.eux/rest/v2/all?fields=name;callingCodes',
+      'https://restcountries.eu/rest/v2/all?fields=name;callingCodes',
     );
     const response = await request.json();
     return response;

@@ -112,9 +112,7 @@ const Home: React.FC<any> = ({navigation}) => {
         <PrimaryButton
           hasIcon={true}
           iconName="plus-a"
-          onPress={() =>
-            navigation ? navigation.navigate('AddContact') : null
-          }
+          onPress={() => navigation.navigate('AddContact')}
           customStyle={styles.addContact}
         />
       </View>
